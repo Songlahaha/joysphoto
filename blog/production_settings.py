@@ -1,9 +1,15 @@
 import dj_database_url
 from .settings import * # 含入原本的settings.py所有設定
 # heroku使用的資料庫為PostgreSQL，所以要修改資料庫設定
-DATABASES = {
-    'default': dj_database_url.config(),
-}
+
+
+
+if ON_HEROKU:
+    DATABASE_URL = 'postgresql://<postgresql>'
+else:
+    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 STATIC_ROOT = 'staticfiles'
 
