@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+{% endblock header %}
+
+{% block content %}
+<!-- 輪播圖 -->
+<section class="container mx-auto mt-2 overflow-hidden">
+  <div id="slider" class="w-full md:h-full relative">
+    <div class="swiper-wrapper">
+      <!-- 輪播圖列表 -->
+      {% for slide in slides %}
+      <div class="swiper-slide w-full relative">
+        <img class="w-full h-full" src="{{slide.img.url}}" alt="{{slide.title}}">
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+{% endblock content%}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper('#slider', {
+    loop:true,
+    autoplay:true,
+    speed:500,
+    navigation:{
+      nextEl:".swiper-button-next",
+      prevEl:".swiper-button-prev",
+    },
+  })
+</script>
+{% endblock scripts %}

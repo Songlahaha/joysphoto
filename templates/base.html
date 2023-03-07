@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>{% block title %}JOY'S PHOTO{% endblock title %}</title>
+    <script
+      src="https://kit.fontawesome.com/a26c74d638.js"
+      crossorigin="anonymous"
+    ></script>
+    {% block header %}
+    {% endblock header %}
+</head>
+<body class="bg-third">
+    <header class="bg-four">
+        <nav class="container mx-auto font-mono">
+            <!-- PC端導覽列 -->
+            <div class="flex justify-between items-center mx-2 md:mx-0">
+                <div class="flex justify-between items-center">
+                    <a href="/" class="mb-2 mr-2">
+                        <img class="w-10" src="{% static './images/camera-svgrepo-com.svg' %}" alt="blog">
+                    </a>
+                    <span class="text-primary">Joy's Photo</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-40 text-primary font-light">
+                    <a class="hover:hover:text-amber-700" href="/"><i class="fa fa-home"></i> 首頁</a>
+                    <a class="hover:hover:text-amber-700" href="{% url 'details' %}"><i class="fa-solid fa-image"></i> 照片</a>
+                    <a class="hover:hover:text-amber-700" href="{% url 'about' %}"><i class="fa fa-user"></i> 關於我</a>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <form action="{% url 'searchpost' %}">
+                        <div class="relative text-primary">
+                            <input class="text-sm bg-white rounded-full py-1 px-2" type="search" name="q" id="q" autocomplete="false" placeholder="請輸入關鍵字">
+                            <button class="absolute right-2 top-1" type="submit">
+                                <img class="w-5" src="{% static './images/search-svgrepo-com.svg' %}" alt="search">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Mobile端導覽列 -->
+                 <div class="md:hidden">
+                <button class="mobile-menu-btn">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+            </div>
+            <div class="hidden md:hidden mobile-menu flex justify-center space-x-4">
+                <a class="text-sm text-primary hover:text-amber-700" href="/">首頁</a>
+                <a class="text-sm text-primary hover:text-amber-700" href="{% url 'details' %}">相片</a>
+                <a class="text-sm text-primary hover:text-amber-700" href="{% url 'about' %}">關於我</a>
+            </div>
+            
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock content %}
+    <!-- 頁腳 -->
+    
+    <footer class="bg-secondary">
+        <div class="container hidden md:block font-mono">
+          <div class="flex justify-between font-light text-primary mt-4">
+            <div class="text-primary hover:underline hover:text-amber-700">
+                <a href="/">Home</a>
+            </div>
+            <div class="text-primary hover:underline hover:text-amber-700">
+                <a href="{% url 'details' %}">Photo</a>
+            </div>
+            <div class="text-primary hover:underline hover:text-amber-700">
+                <a href="{% url 'about' %}">About</a>
+            </div>
+            <div class="text-primary hover:underline hover:text-amber-700">
+                <i class="fa-brands fa-instagram"></i><a target="_blank" href="https://www.instagram.com/bbbcy/"> Instagram</a>
+            </div>
+          </div>
+        </div>
+        <!-- Copyright -->
+        <div class="py-3 text-center text-sm bg-primary text-white font-mono">
+          <p>Copyright &copy; 2023 Joy's Photo 版權所有</p>
+        </div>
+      </footer>
+
+        
+        
+        
+    {% block scripts %}
+    {% endblock scripts %}
+
+</body>
+<script>
+    // 切換顯示Mobile端導航欄位
+    const btnBurger = document.querySelector("button.mobile-menu-btn");
+    const menuMoblie = document.querySelector(".mobile-menu");
+
+    btnBurger.addEventListener("click",() =>{
+        menuMoblie.classList.toggle("hidden");
+    });
+</script>
+
+</html>

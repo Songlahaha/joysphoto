@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="block w-full md:flex justify-center space-x-4">
+    <div class="bg-secondary p-4 mt-2 text-center text-sm text-primary font-mono">
+        <p class="mt-16">This is a great space to write a long text about</p>
+        <p>your company and your services. You can use</p>
+        <p>your company. Talk about your team and </p>
+        <p>what services you provide.</p>
+        <br>
+        <p>This is a great space to write a long text about</p>
+        <p>your company and your services. You can use</p>
+        <p>this space to go into a little more detail about</p>
+        <p>your company. Talk about your team and </p>
+        <p>what services you provide.</p>
+    </div>
+    <div class="md:mt-2">
+        <img class="w-full" src="{% static './images/profile.jpg' %}" alt="">
+    </div>
+</div>
+{% endblock content %}
