@@ -5,12 +5,7 @@ DATABASES = {
     'default': dj_database_url.config(),
 }
 
-STATIC_URL = 'static/'
-
-STATICFILES_DIRS = ('static',)
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / 'media/'
+STATIC_ROOT = 'staticfiles'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') # 設定HTTP連線方式
 ALLOWED_HOSTS = ['*'] # 讓所有的網域都能瀏覽本網站
