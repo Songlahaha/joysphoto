@@ -16,7 +16,7 @@
         {% for item in items %}
         <div class="flex w-1/3 flex-wrap">
           <div class="w-full p-1 md:p-2">
-            <a data-fancybox="gallery" data-caption="標題 : {{item.title}}<br>地點 : {{item.location}}<br> 相機型號 : {{item.camera}}" href="{{item.img.url}}">
+            <a data-fancybox="gallery" data-caption="{{item.title}}<br>{{item.location}}<br>{{item.camera}}" href="{{item.img.url}}">
                 <img
               alt=""
               class="block h-full w-full rounded-lg object-cover object-center"
